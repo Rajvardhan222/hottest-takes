@@ -2,7 +2,7 @@ import { usePosts } from '../hooks';
 import Post from './post';
 
 const Posts = () => {
-  const posts = usePosts();
+  const posts = usePosts() 
 
   if (!posts.length)
     return (

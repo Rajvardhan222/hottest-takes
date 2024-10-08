@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import { ActionsContext, StateContext } from './context';
+import { ActionsContext, StateContext, useUserContext } from './context';
 
 export const useActions = () => {
   return useContext(ActionsContext);
 };
 
 export const useUsers = () => {
-  const { users } = useContext(StateContext);
+  const { users } = useContext(useUserContext);
   return users;
 };
 

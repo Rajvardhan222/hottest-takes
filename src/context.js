@@ -5,9 +5,11 @@ import { userActions, usersReducer } from './features/users';
 
 import postData from './api/posts.json';
 import userData from './api/users.json';
+import User from './components/user';
 
 export const StateContext = createContext({});
 export const ActionsContext = createContext({});
+export const useUserContext =createContext({});
 
 export const Provider = ({ children }) => {
   const [posts, postDispatch] = useReducer(postsReducer, postData);
@@ -23,8 +25,10 @@ export const Provider = ({ children }) => {
 
   return (
     <ActionsContext.Provider value={actions}>
-      <StateContext.Provider value={{ posts, users }}>
+      <StateContext.Provider value={ posts}>
+        <useUserContext.Provider value={users}>
         {children}
+        </useUserContext.Provider>
       </StateContext.Provider>
     </ActionsContext.Provider>
   );
